@@ -8,66 +8,37 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/bt_main_insertarp2"
+        android:id="@+id/btnInsertarJuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="73dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="16dp"
         android:onClick="insertarProductoConFoto"
-        android:text="Insertar Producto con foto"
+        android:text="Insertar nuevo juego"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_main_insertarp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bt_main_insertarp"
+        android:id="@+id/btnVerCatalogoJuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="insertarProducto"
-        android:text="Insertar Producto"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_main_insertarp2" />
-
-    <Button
-        android:id="@+id/bt_main_mostrarp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="112dp"
         android:onClick="mostrarProductos"
-        android:text="Mostrar Productos"
+        android:text="Mostrar catálogo"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_main_insertarp" />
-
-    <Button
-        android:id="@+id/bt_mostrar_datos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:onClick="mostrarDatos"
-        android:text="Mostrar Datos"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_main_mostrarp" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInsertarJuego" />
 
     <EditText
-        android:id="@+id/edt_login_email"
+        android:id="@+id/etCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="90dp"
         android:ems="10"
         android:hint="Escribe el email"
         android:inputType="text"
@@ -75,10 +46,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_mostrar_datos" />
+        app:layout_constraintTop_toBottomOf="@+id/btnVerCatalogoJuego" />
 
     <EditText
-        android:id="@+id/edt_login_password"
+        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -86,40 +57,42 @@
         android:hint="Escribe el password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/edt_login_email"
-        app:layout_constraintStart_toStartOf="@+id/edt_login_email"
-        app:layout_constraintTop_toBottomOf="@+id/edt_login_email" />
+        app:layout_constraintEnd_toEndOf="@+id/etCorreo"
+        app:layout_constraintStart_toStartOf="@+id/etCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/btnAcceder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
         android:onClick="entrar"
-        android:text="Entrar"
+        android:text="Acceder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Button
-        android:id="@+id/bt_salir"
+        android:id="@+id/btnDesconectar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
         android:onClick="salir"
-        android:text="Salir"
+        android:text="Desconectar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Button
-        android:id="@+id/bt_registrarse"
+        android:id="@+id/btnRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="180dp"
         android:onClick="registrarse"
         android:text="Registrarse"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_login"
-        app:layout_constraintEnd_toStartOf="@+id/bt_salir"
-        app:layout_constraintStart_toEndOf="@+id/bt_login"
-        app:layout_constraintTop_toTopOf="@+id/bt_login" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAcceder" />
 </androidx.constraintlayout.widget.ConstraintLayout>

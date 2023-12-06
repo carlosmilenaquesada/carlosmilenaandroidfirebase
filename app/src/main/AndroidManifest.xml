@@ -22,12 +22,6 @@
             android:name=".MostrarDatosFirebaseActivity"
             android:exported="false" />
         <activity
-            android:name=".MostrarProductosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NuevoProductoActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

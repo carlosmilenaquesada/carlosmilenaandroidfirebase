@@ -3,80 +3,91 @@ package es.carlosmilena.androidfirebase.clases;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Producto implements Serializable {
-    // atributos
-    private String idProducto;
-    private String nombre;
-    private int cantidad;
-    private double precio;
+public class Producto implements Serializable{
+	private String identificador;
+	private String plataforma;
+	private String nombreJuego;
+	private String genero;
+	private double precioVenta;
 
-    public Producto(String idProducto, String nombre, int cantidad, double precio)
-    {
-        this.idProducto = idProducto;
-        this.nombre = nombre;
-        this.cantidad = cantidad;
-        this.precio = precio;
-    }
+	public Producto(String identificador, String plataforma, String nombreJuego, String genero,
+					double precioVenta){
+		this.identificador = identificador;
+		this.plataforma = plataforma;
+		this.nombreJuego = nombreJuego;
+		this.genero = genero;
+		this.precioVenta = precioVenta;
+	}
 
-    public Producto() {
-        this.idProducto = "";
-        this.nombre = "";
-        this.cantidad = 0;
-        this.precio = 0.0;
-    }
+	public Producto(){
+		this.identificador = "";
+		this.plataforma = "";
+		this.nombreJuego = "";
+		this.genero = "";
+		this.precioVenta = 0.0;
+	}
 
-    public String getIdProducto() {
-        return idProducto;
-    }
+	public String getIdentificador(){
+		return identificador;
+	}
 
-    public void setIdProducto(String idProducto) {
-        this.idProducto = idProducto;
-    }
+	public void setIdentificador(String identificador){
+		this.identificador = identificador;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getPlataforma(){
+		return plataforma;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setPlataforma(String plataforma){
+		this.plataforma = plataforma;
+	}
 
-    public int getCantidad() {
-        return cantidad;
-    }
+	public String getNombreJuego(){
+		return nombreJuego;
+	}
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+	public void setNombreJuego(String nombreJuego){
+		this.nombreJuego = nombreJuego;
+	}
 
-    public double getPrecio() {
-        return precio;
-    }
+	public String getGenero(){
+		return genero;
+	}
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
+	public void setGenero(String genero){
+		this.genero = genero;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Producto)) return false;
-        Producto producto = (Producto) o;
-        return idProducto.equals(producto.idProducto);
-    }
+	public double getPrecioVenta(){
+		return precioVenta;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idProducto);
-    }
+	public void setPrecioVenta(double precioVenta){
+		this.precioVenta = precioVenta;
+	}
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "idProducto='" + idProducto + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", cantidad=" + cantidad +
-                ", precio=" + precio +
-                '}';
-    }
+	@Override
+	public boolean equals(Object o){
+		if(this == o){
+			return true;
+		}
+		if(o == null || getClass() != o.getClass()){
+			return false;
+		}
+		Producto producto = (Producto) o;
+		return identificador.equals(producto.identificador);
+	}
+
+	@Override
+	public int hashCode(){
+		return Objects.hash(identificador);
+	}
+
+	@Override
+	public String toString(){
+		return "Producto{" + "identificador='" + identificador + '\'' + ", plataforma='" +
+			   plataforma + '\'' + ", nombreJuego='" + nombreJuego + '\'' + ", genero='" + genero +
+			   '\'' + ", precioVenta=" + precioVenta + '}';
+	}
 }

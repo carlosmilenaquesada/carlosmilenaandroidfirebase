@@ -19,16 +19,16 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
    // FirebaseDatabase database;
-    EditText edt_login_email;
-    EditText edt_login_password;
+    EditText etCorreo;
+    EditText etPassword;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edt_login_email = (EditText) findViewById(R.id.edt_login_email);
-        edt_login_password = (EditText) findViewById(R.id.edt_login_password);
+        etCorreo = (EditText) findViewById(R.id.etCorreo);
+        etPassword = (EditText) findViewById(R.id.etPassword);
         //------------------------------------
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,22 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void insertarProducto(View view)
+/*    public void insertarProducto(View view)
     {
         Intent intent = new Intent(this,NuevoProductoActivity.class);
         startActivity(intent);
-    }
+    }*/
 
     public void insertarProductoConFoto(View view)
     {
         Intent intent = new Intent(this,NuevoProducto_con_foto.class);
         startActivity(intent);
     }
-    public void mostrarProductos(View view)
-    {
-        Intent intent = new Intent(this,MostrarProductosActivity.class);
-        startActivity(intent);
-    }
+
 
     public void mostrarDatos(View view)
     {
@@ -70,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void entrar(View view)
     {
-        String email = String.valueOf(edt_login_email.getText());
-        String password = String.valueOf(edt_login_password.getText());
+        String email = String.valueOf(etCorreo.getText());
+        String password = String.valueOf(etPassword.getText());
         //-----------------------------------
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -104,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
     //---------------------------------------
     public void registrarse(View view)
     {
-        String email = String.valueOf(edt_login_email.getText()).trim();
-        String password = String.valueOf(edt_login_password.getText()).trim();
+        String email = String.valueOf(etCorreo.getText()).trim();
+        String password = String.valueOf(etPassword.getText()).trim();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

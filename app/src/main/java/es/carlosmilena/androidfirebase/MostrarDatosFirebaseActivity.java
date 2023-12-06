@@ -114,7 +114,7 @@ public class MostrarDatosFirebaseActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
                     Producto a = (Producto) dataSnapshot.getValue(Producto.class);
-                    if(a.getNombre().toLowerCase().contains(nombre.toLowerCase()))
+                    if(a.getNombreJuego().toLowerCase().contains(nombre.toLowerCase()))
                     {
                         productos.add(a);
                     }
