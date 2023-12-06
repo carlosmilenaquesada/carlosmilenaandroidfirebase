@@ -77,7 +77,7 @@ public class ImagenesFirebase {
                 String errorMessage = exception.getMessage();
                 Log.i("firebase1",errorMessage);
                 Log.i("firebase1","error code" + String.valueOf(errorCode));
-                imagendescargada.setImageResource(R.drawable.producto);
+                imagendescargada.setImageResource(R.drawable.juego);
             }
         });
     }

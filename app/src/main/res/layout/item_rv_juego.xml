@@ -13,7 +13,7 @@
         android:layout_width="202dp"
         android:layout_height="116dp"
         android:layout_weight="1"
-        app:srcCompat="@drawable/producto"
+        app:srcCompat="@drawable/juego"
    />
 
     <LinearLayout

@@ -20,12 +20,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import es.carlosmilena.androidfirebase.clases.Producto;
-import es.carlosmilena.androidfirebase.recyclerview1.ProductoViewHolder1;
+import es.carlosmilena.androidfirebase.clases.Juego;
+import es.carlosmilena.androidfirebase.recyclerview.JuegoViewHolder;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesBlobBitmap;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesFirebase;
 
-public class MostrarDetallesProductos extends AppCompatActivity{
+public class EditarJuegoActivity extends AppCompatActivity{
 	private FirebaseDatabase database;
 	private DatabaseReference myRef;
 
@@ -40,23 +40,23 @@ public class MostrarDetallesProductos extends AppCompatActivity{
 	private ImageView ivDetalleImagen;
 
 
-	private Producto p;
+	private Juego p;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_mostrar_detalles_productos);
+		setContentView(R.layout.activity_editar_juego);
 		ivDetalleImagen = (ImageView) findViewById(R.id.ivDetalleImagen);
 		Intent intent = getIntent();
 		if(intent != null){
-			p =	(Producto) intent.getSerializableExtra(ProductoViewHolder1.EXTRA_DETALLES_PRODUCTO);
+			p =	(Juego) intent.getSerializableExtra(JuegoViewHolder.EXTRA_DETALLES_PRODUCTO);
 			//---------------------- cargo la foto  ----------------------------------------
 			byte[] fotobinaria =
-					(byte[]) intent.getByteArrayExtra(ProductoViewHolder1.EXTRA_IMAGEN2_PRODUCTO);
+					(byte[]) intent.getByteArrayExtra(JuegoViewHolder.EXTRA_IMAGEN2_PRODUCTO);
 			Bitmap fotobitmap = ImagenesBlobBitmap.bytes_to_bitmap(fotobinaria, 200, 200);
 			ivDetalleImagen.setImageBitmap(fotobitmap);
 		}else{
-			p = new Producto();
+			p = new Juego();
 		}
 		//----------------------------------------------------------------
 		edtDetalleIdentificador = (EditText) findViewById(R.id.edtDetalleIdentificador);
@@ -78,7 +78,7 @@ public class MostrarDetallesProductos extends AppCompatActivity{
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("productos");
 		myRef.child(p.getIdentificador()).removeValue();
-		Toast.makeText(this, "producto borrado", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "juego borrado", Toast.LENGTH_LONG).show();
 		//---------------------- borramos la imagen del firebase ------------------
 		// borramos la imagen del firebase store
 		String carpeta = p.getIdentificador();
@@ -97,7 +97,7 @@ public class MostrarDetallesProductos extends AppCompatActivity{
 		String nombreJuego = String.valueOf(edtDetalleNombreJuego.getText());
 		String genero = String.valueOf(edtDetalleGenero.getText());
 		double precioVenta = Double.valueOf(String.valueOf(edtDetallePrecioVenta.getText()));
-		Producto p1 = new Producto(identificador, plataforma, nombreJuego, genero, precioVenta);
+		Juego p1 = new Juego(identificador, plataforma, nombreJuego, genero, precioVenta);
 		Map<String, Object> productos = new HashMap<>();
 		productos.put(identificador, p1);//puede dar fallo por el identificador (ponía id)
 		myRef.updateChildren(productos);
@@ -107,7 +107,7 @@ public class MostrarDetallesProductos extends AppCompatActivity{
 			ImagenesFirebase.borrarFoto(carpeta, p.getNombreJuego());
 			ImagenesFirebase.subirFoto(carpeta, nombreJuego, ivDetalleImagen);
 		}
-		Toast.makeText(this, "producto actualizado correctamente ", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "juego actualizado correctamente ", Toast.LENGTH_LONG).show();
 		finish();
 	}
 	//--------------------------------------------------------------------------

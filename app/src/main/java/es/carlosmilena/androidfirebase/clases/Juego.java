@@ -3,15 +3,15 @@ package es.carlosmilena.androidfirebase.clases;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Producto implements Serializable{
+public class Juego implements Serializable{
 	private String identificador;
 	private String plataforma;
 	private String nombreJuego;
 	private String genero;
 	private double precioVenta;
 
-	public Producto(String identificador, String plataforma, String nombreJuego, String genero,
-					double precioVenta){
+	public Juego(String identificador, String plataforma, String nombreJuego, String genero,
+				 double precioVenta){
 		this.identificador = identificador;
 		this.plataforma = plataforma;
 		this.nombreJuego = nombreJuego;
@@ -19,7 +19,7 @@ public class Producto implements Serializable{
 		this.precioVenta = precioVenta;
 	}
 
-	public Producto(){
+	public Juego(){
 		this.identificador = "";
 		this.plataforma = "";
 		this.nombreJuego = "";
@@ -75,8 +75,8 @@ public class Producto implements Serializable{
 		if(o == null || getClass() != o.getClass()){
 			return false;
 		}
-		Producto producto = (Producto) o;
-		return identificador.equals(producto.identificador);
+		Juego juego = (Juego) o;
+		return identificador.equals(juego.identificador);
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class Producto implements Serializable{
 
 	@Override
 	public String toString(){
-		return "Producto{" + "identificador='" + identificador + '\'' + ", plataforma='" +
+		return "Juego{" + "identificador='" + identificador + '\'' + ", plataforma='" +
 			   plataforma + '\'' + ", nombreJuego='" + nombreJuego + '\'' + ", genero='" + genero +
 			   '\'' + ", precioVenta=" + precioVenta + '}';
 	}

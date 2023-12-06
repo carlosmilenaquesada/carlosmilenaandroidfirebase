@@ -23,14 +23,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import es.carlosmilena.androidfirebase.clases.Producto;
-import es.carlosmilena.androidfirebase.recyclerview1.ListaProductoAdapter1;
+import es.carlosmilena.androidfirebase.clases.Juego;
+import es.carlosmilena.androidfirebase.recyclerview.CatalogoJuegosAdapter;
 
-public class MostrarDatosFirebaseActivity extends AppCompatActivity{
+public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	private FirebaseDatabase database;
 	private DatabaseReference myRefProductos;
-	ListaProductoAdapter1 adapter;
-	private ArrayList<Producto> juegos;
+	CatalogoJuegosAdapter adapter;
+	private ArrayList<Juego> juegos;
 	private EditText etBuscarJuego;
 	private RecyclerView rvListaJuegos;
 
@@ -43,7 +43,7 @@ public class MostrarDatosFirebaseActivity extends AppCompatActivity{
 			usuarioActual.reload();
 		}else{
 			Toast.makeText(this, "debes loguearte primero", Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, AutenticacionActivity.class);
 			startActivity(intent);
 		}
 	}
@@ -52,15 +52,15 @@ public class MostrarDatosFirebaseActivity extends AppCompatActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_mostrar_datos_firebase);
+		setContentView(R.layout.activity_mostrar_catalogo_firebase);
 		etBuscarJuego = (EditText) findViewById(R.id.etBuscarJuego);
 		//-------------------------------------------------------------
 		rvListaJuegos = (RecyclerView) findViewById(R.id.rvListaJuegos);
 		//------------------------------------------------------------
 		database = FirebaseDatabase.getInstance();
-		juegos = new ArrayList<Producto>();
+		juegos = new ArrayList<Juego>();
 		//-----------------------------------------------------------
-		adapter = new ListaProductoAdapter1(this, juegos);
+		adapter = new CatalogoJuegosAdapter(this, juegos);
 		rvListaJuegos.setAdapter(adapter);
 		//-----------------------------------------------------------
 		myRefProductos = database.getReference("productos");
@@ -68,12 +68,12 @@ public class MostrarDatosFirebaseActivity extends AppCompatActivity{
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
 				// adapter.getProductos().clear();
-				ArrayList<Producto> productos = new ArrayList<Producto>();
+				ArrayList<Juego> juegos = new ArrayList<Juego>();
 				for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-					Producto a = (Producto) dataSnapshot.getValue(Producto.class);
-					productos.add(a);
+					Juego a = (Juego) dataSnapshot.getValue(Juego.class);
+					juegos.add(a);
 				}
-				adapter.setProductos(productos);
+				adapter.setProductos(juegos);
 				adapter.notifyDataSetChanged();
 			}
 
@@ -102,14 +102,14 @@ public class MostrarDatosFirebaseActivity extends AppCompatActivity{
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
 				// adapter.getProductos().clear();
-				ArrayList<Producto> productos = new ArrayList<Producto>();
+				ArrayList<Juego> juegos = new ArrayList<Juego>();
 				for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-					Producto a = (Producto) dataSnapshot.getValue(Producto.class);
+					Juego a = (Juego) dataSnapshot.getValue(Juego.class);
 					if(a.getNombreJuego().toLowerCase().contains(nombre.toLowerCase())){
-						productos.add(a);
+						juegos.add(a);
 					}
 				}
-				adapter.setProductos(productos);
+				adapter.setProductos(juegos);
 				adapter.notifyDataSetChanged();
 			}
 

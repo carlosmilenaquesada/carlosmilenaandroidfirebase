@@ -4,43 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="entrar"
-    tools:context=".MainActivity">
+    tools:context=".AutenticacionActivity">
 
-    <Button
-        android:id="@+id/btnInsertarJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="99dp"
-        android:onClick="insertarProductoConFoto"
-        android:text="Insertar nuevo juego"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.345"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnVerCatalogoJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:onClick="mostrarProductos"
-        android:text="Mostrar catálogo"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsertarJuego" />
 
     <EditText
-        android:id="@+id/etCorreo"
+        android:id="@+id/etNuevoCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:ems="10"
-        android:hint="Escribe el email"
+        android:hint="Introduce cuenta Email"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,17 +22,17 @@
         app:layout_constraintTop_toBottomOf="@+id/btnVerCatalogoJuego" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etNuevoPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Escribe el password"
+        android:hint="Introduce contraseña"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/etCorreo"
-        app:layout_constraintStart_toStartOf="@+id/etCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
+        app:layout_constraintEnd_toEndOf="@+id/etNuevoCorreo"
+        app:layout_constraintStart_toStartOf="@+id/etNuevoCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/etNuevoCorreo" />
 
     <Button
         android:id="@+id/btnAcceder"
@@ -70,7 +43,7 @@
         android:onClick="entrar"
         android:text="Acceder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etNuevoPassword" />
 
     <Button
         android:id="@+id/btnDesconectar"
@@ -81,18 +54,19 @@
         android:onClick="salir"
         android:text="Desconectar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etNuevoPassword" />
 
     <Button
-        android:id="@+id/btnRegistrarse"
+        android:id="@+id/btnCrearNuevaCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="180dp"
-        android:onClick="registrarse"
-        android:text="Registrarse"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="79dp"
+        android:onClick="irACrearNuevaCuenta"
+        android:text="Crear nueva cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAcceder" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDesconectar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

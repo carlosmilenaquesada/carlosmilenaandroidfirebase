@@ -18,10 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 
-import es.carlosmilena.androidfirebase.clases.Producto;
+import es.carlosmilena.androidfirebase.clases.Juego;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesFirebase;
 
-public class NuevoProducto_con_foto extends AppCompatActivity{
+public class AgregarNuevoJuegoActivity extends AppCompatActivity{
 	private FirebaseDatabase database;
 	private DatabaseReference myRef;
 	public static final int NUEVA_IMAGEN = 1;
@@ -36,7 +36,7 @@ public class NuevoProducto_con_foto extends AppCompatActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_nuevo_producto_con_foto);
+		setContentView(R.layout.activity_agregar_nuevo_juego);
 		edtNuevoIdentificador = (EditText) findViewById(R.id.edtNuevoIdentificador);
 		edtNuevoPlataforma = (EditText) findViewById(R.id.edtNuevoPlataforma);
 		edtNuevoNombreJuego = (EditText) findViewById(R.id.edtNuevoNombreJuego);
@@ -54,7 +54,7 @@ public class NuevoProducto_con_foto extends AppCompatActivity{
 		String nombreJuego = String.valueOf(edtNuevoNombreJuego.getText());
 		String genero = String.valueOf(edtNuevoGenero.getText());
 		double precioVenta = Double.valueOf(String.valueOf(edtNuevoPrecioVenta.getText()));
-		Producto p1 = new Producto(identificador, plataforma, nombreJuego, genero, precioVenta);
+		Juego p1 = new Juego(identificador, plataforma, nombreJuego, genero, precioVenta);
 		myRef.child("productos").child(p1.getIdentificador()).setValue(p1);
 		//---------------------- codigo para añadir la foto al storage
 		// ------------------------------
@@ -63,7 +63,7 @@ public class NuevoProducto_con_foto extends AppCompatActivity{
 			String carpeta = p1.getIdentificador();
 			ImagenesFirebase.subirFoto(carpeta, p1.getNombreJuego(), ivNuevoImagen);
 		}
-		Toast.makeText(this, "producto añadido correctamente ", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "juego añadido correctamente ", Toast.LENGTH_LONG).show();
 	}
 	//--------------------------------------------------------------------------
 	//--------CODIGO PARA CAMBIAR LA IMAGEN----------------

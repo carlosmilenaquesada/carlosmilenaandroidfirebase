@@ -1,4 +1,4 @@
-package es.carlosmilena.androidfirebase.recyclerview1;
+package es.carlosmilena.androidfirebase.recyclerview;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,25 +12,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import es.carlosmilena.androidfirebase.R;
-import es.carlosmilena.androidfirebase.clases.Producto;
+import es.carlosmilena.androidfirebase.clases.Juego;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesFirebase;
 
-public class ListaProductoAdapter1 extends RecyclerView.Adapter<ProductoViewHolder1>{
+public class CatalogoJuegosAdapter extends RecyclerView.Adapter<JuegoViewHolder>{
 	private Context contexto;
-	private ArrayList<Producto> productos;
+	private ArrayList<Juego> juegos;
 	private LayoutInflater inflate;
 
-	public ListaProductoAdapter1(Context contexto, ArrayList<Producto> productos){
+	public CatalogoJuegosAdapter(Context contexto, ArrayList<Juego> juegos){
 		this.contexto = contexto;
-		this.productos = productos;
+		this.juegos = juegos;
 		inflate = LayoutInflater.from(this.contexto);
 	}
 
 	@NonNull
 	@Override
-	public ProductoViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-		View mItemView = inflate.inflate(R.layout.item_rv_productos1, parent, false);
-		ProductoViewHolder1 evh = new ProductoViewHolder1(mItemView, this);
+	public JuegoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+		View mItemView = inflate.inflate(R.layout.item_rv_juego, parent, false);
+		JuegoViewHolder evh = new JuegoViewHolder(mItemView, this);
 		return evh;
 	}
 
@@ -42,18 +42,18 @@ public class ListaProductoAdapter1 extends RecyclerView.Adapter<ProductoViewHold
 		this.contexto = contexto;
 	}
 
-	public ArrayList<Producto> getProductos(){
-		return productos;
+	public ArrayList<Juego> getProductos(){
+		return juegos;
 	}
 
-	public void setProductos(ArrayList<Producto> productos){
-		this.productos = productos;
+	public void setProductos(ArrayList<Juego> juegos){
+		this.juegos = juegos;
 		notifyDataSetChanged();
 	}
 
 	@Override
-	public void onBindViewHolder(@NonNull ProductoViewHolder1 holder, int position){
-		Producto p = this.getProductos().get(position);
+	public void onBindViewHolder(@NonNull JuegoViewHolder holder, int position){
+		Juego p = this.getProductos().get(position);
 		//----------------------------------------------------------------------
 		holder.getTvItemIdentificador().setText("identificador: " + p.getIdentificador());
 		holder.getTvItemPlataforma().setText("plataforma: " + p.getPlataforma());
@@ -67,6 +67,6 @@ public class ListaProductoAdapter1 extends RecyclerView.Adapter<ProductoViewHold
 
 	@Override
 	public int getItemCount(){
-		return this.productos.size();
+		return this.juegos.size();
 	}
 }

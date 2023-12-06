@@ -1,4 +1,4 @@
-package es.carlosmilena.androidfirebase.recyclerview1;
+package es.carlosmilena.androidfirebase.recyclerview;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,16 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import es.carlosmilena.androidfirebase.MostrarDatosFirebaseActivity;
-import es.carlosmilena.androidfirebase.MostrarDetallesProductos;
+import es.carlosmilena.androidfirebase.MostrarCatalogoFirebaseActivity;
+import es.carlosmilena.androidfirebase.EditarJuegoActivity;
 import es.carlosmilena.androidfirebase.R;
-import es.carlosmilena.androidfirebase.clases.Producto;
+import es.carlosmilena.androidfirebase.clases.Juego;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesBlobBitmap;
 
-public class ProductoViewHolder1 extends RecyclerView.ViewHolder implements View.OnClickListener{
-	public static final String EXTRA_DETALLES_PRODUCTO = "es.carlosmilena.ejemplo2firebase2324" +
-                                                         ".mostrardetallesproductos.producto";
-	public static final String EXTRA_IMAGEN2_PRODUCTO = "es.carlosmilena.ejemplo2firebase2324" +
+public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+	public static final String EXTRA_DETALLES_PRODUCTO = "es.carlosmilena.androidfirebase" +
+                                                         ".mostrardetallesproductos.juego";
+	public static final String EXTRA_IMAGEN2_PRODUCTO = "es.carlosmilena.androidfirebase" +
                                                         ".mostrardetallesproductos.imagen2";
 	private TextView tvItemIdentificador;
 	private TextView tvItemPlataforma;
@@ -26,10 +26,10 @@ public class ProductoViewHolder1 extends RecyclerView.ViewHolder implements View
 	private TextView tvItemGenero;
 	private TextView tvItemPrecioVenta;
 	private ImageView ivItemImagen;
-	private ListaProductoAdapter1 lpa;
+	private CatalogoJuegosAdapter lpa;
 
 
-	public ProductoViewHolder1(@NonNull View itemView, ListaProductoAdapter1 lpa){
+	public JuegoViewHolder(@NonNull View itemView, CatalogoJuegosAdapter lpa){
 		super(itemView);
 		tvItemNombreJuego = (TextView) itemView.findViewById(R.id.tvItemIdentificador);
 		tvItemGenero = (TextView) itemView.findViewById(R.id.tvItemPlataforma);
@@ -87,19 +87,19 @@ public class ProductoViewHolder1 extends RecyclerView.ViewHolder implements View
         this.ivItemImagen = ivItemImagen;
     }
 
-    public ListaProductoAdapter1 getLpa(){
+    public CatalogoJuegosAdapter getLpa(){
         return lpa;
     }
 
-    public void setLpa(ListaProductoAdapter1 lpa){
+    public void setLpa(CatalogoJuegosAdapter lpa){
         this.lpa = lpa;
     }
 
     @Override
 	public void onClick(View view){
 		int posicion = getLayoutPosition();
-		Producto p = lpa.getProductos().get(posicion);
-		Intent intent = new Intent(lpa.getContexto(), MostrarDetallesProductos.class);
+		Juego p = lpa.getProductos().get(posicion);
+		Intent intent = new Intent(lpa.getContexto(), EditarJuegoActivity.class);
 		intent.putExtra(EXTRA_DETALLES_PRODUCTO, p);
 		ivItemImagen.buildDrawingCache();
 		Bitmap foto_bm = ivItemImagen.getDrawingCache();
@@ -107,6 +107,6 @@ public class ProductoViewHolder1 extends RecyclerView.ViewHolder implements View
 		intent.putExtra(EXTRA_IMAGEN2_PRODUCTO, fotobytes);
 		//intent.putExtra(EXTRA_POSICION_CASILLA, posicion);
 		lpa.getContexto().startActivity(intent);
-		((MostrarDatosFirebaseActivity) lpa.getContexto()).finish();
+		((MostrarCatalogoFirebaseActivity) lpa.getContexto()).finish();
 	}
 }

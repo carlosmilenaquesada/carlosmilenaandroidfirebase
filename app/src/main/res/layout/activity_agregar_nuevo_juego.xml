@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MostrarDetallesProductos">
+    tools:context=".AgregarNuevoJuegoActivity">
 
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Detalles del juego"
+        android:text="Nuevo juego"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -19,20 +19,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ivDetalleImagen"
-        android:layout_width="128dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="Imagen juego"
+        android:id="@+id/ivNuevoImagen"
+        android:layout_width="140dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="26dp"
+        android:contentDescription="foto del juego"
         android:onClick="cambiar_imagen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
-        app:srcCompat="@drawable/producto" />
+        app:srcCompat="@drawable/juego" />
 
     <EditText
-        android:id="@+id/edtDetalleIdentificador"
+        android:id="@+id/edtNuevoIdentificador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
@@ -44,10 +43,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivDetalleImagen" />
+        app:layout_constraintTop_toBottomOf="@+id/ivNuevoImagen" />
 
     <EditText
-        android:id="@+id/edtDetallePlataforma"
+        android:id="@+id/edtNuevoPlataforma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -59,10 +58,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDetalleIdentificador" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevoIdentificador" />
 
     <EditText
-        android:id="@+id/edtDetalleNombreJuego"
+        android:id="@+id/edtNuevoNombreJuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -73,10 +72,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDetallePlataforma" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevoPlataforma" />
 
     <EditText
-        android:id="@+id/edtDetalleGenero"
+        android:id="@+id/edtNuevoGenero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
@@ -87,10 +86,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDetalleNombreJuego" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevoNombreJuego" />
 
     <EditText
-        android:id="@+id/edtDetallePrecioVenta"
+        android:id="@+id/edtNuevoPrecioVenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
@@ -101,29 +100,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDetalleGenero" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNuevoGenero" />
+
 
     <Button
-        android:id="@+id/btnDetalleEditar"
+        android:id="@+id/btnInsertarNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="43dp"
-        android:onClick="editar_detalles"
-        android:text="Modificar juego"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDetallePrecioVenta" />
-
-    <Button
-        android:id="@+id/btnDetalleEliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="203dp"
-        android:layout_marginTop="43dp"
         android:layout_marginEnd="16dp"
-        android:onClick="borrar_detalles"
-        android:text="Eliminar juego"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDetallePrecioVenta" />
+        android:layout_marginBottom="16dp"
+        android:onClick="insertarProducto_foto"
+        android:text="Insertar juego"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
