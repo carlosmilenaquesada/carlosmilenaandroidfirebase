@@ -31,10 +31,10 @@ public class ProductoViewHolder1 extends RecyclerView.ViewHolder implements View
 
 	public ProductoViewHolder1(@NonNull View itemView, ListaProductoAdapter1 lpa){
 		super(itemView);
-		tvItemNombreJuego = (TextView) itemView.findViewById(R.id.txt_item2_nombre);
-		tvItemGenero = (TextView) itemView.findViewById(R.id.txt_item2_cantidad);
-		tvItemPrecioVenta = (TextView) itemView.findViewById(R.id.txt_item2_precio);
-		ivItemImagen = (ImageView) itemView.findViewById(R.id.img_item2_imagen);
+		tvItemNombreJuego = (TextView) itemView.findViewById(R.id.tvItemIdentificador);
+		tvItemGenero = (TextView) itemView.findViewById(R.id.tvItemPlataforma);
+		tvItemPrecioVenta = (TextView) itemView.findViewById(R.id.tvItemNombreJuego);
+		ivItemImagen = (ImageView) itemView.findViewById(R.id.ivItemImagen);
 		this.lpa = lpa;
 		itemView.setOnClickListener(this);
 	}

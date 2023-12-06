@@ -9,7 +9,7 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/img_item2_imagen"
+        android:id="@+id/ivItemImagen"
         android:layout_width="202dp"
         android:layout_height="116dp"
         android:layout_weight="1"
@@ -23,23 +23,41 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_item2_nombre"
+            android:id="@+id/tvItemIdentificador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="nombre"
+            android:hint="Identificador"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txt_item2_cantidad"
+            android:id="@+id/tvItemPlataforma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Plataforma"
             android:text="cantidad"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txt_item2_precio"
+            android:id="@+id/tvItemNombreJuego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:text="precio"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvItemGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Género"
+            android:text="precio"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvItemPrecioVenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Precio venta"
             android:text="precio"
             android:textSize="20sp" />
     </LinearLayout>

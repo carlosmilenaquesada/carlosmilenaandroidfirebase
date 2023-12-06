@@ -7,7 +7,7 @@
     tools:context=".MostrarDatosFirebaseActivity">
 
     <EditText
-        android:id="@+id/edt_buscar_productos1"
+        android:id="@+id/etBuscarJuego"
         android:layout_width="256dp"
         android:layout_height="48dp"
         android:layout_marginStart="25dp"
@@ -16,12 +16,12 @@
         android:ems="10"
         android:hint="Nombre del producto buscado"
         android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/bt_mostrar1"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarJuego"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_productos1"
+        android:id="@+id/rvListaJuegos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -31,10 +31,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_buscar_productos1" />
+        app:layout_constraintTop_toBottomOf="@+id/etBuscarJuego" />
 
     <Button
-        android:id="@+id/bt_mostrar1"
+        android:id="@+id/btnBuscarJuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
