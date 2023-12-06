@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538569245433",
+    "project_id": "carlosmilenaandroidfirebase",
+    "storage_bucket": "carlosmilenaandroidfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538569245433:android:8c9c905630f42647bb9828",
+        "android_client_info": {
+          "package_name": "es.carlosmilena.androidfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJrUYybj-G46DC_9em-Ef7egEVzJElcQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
