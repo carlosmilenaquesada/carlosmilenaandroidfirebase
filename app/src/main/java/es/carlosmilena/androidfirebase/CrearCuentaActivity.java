@@ -1,5 +1,7 @@
 package es.carlosmilena.androidfirebase;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +21,12 @@ public class CrearCuentaActivity extends AppCompatActivity{
 	// FirebaseDatabase database;
 	EditText etNuevoCorreo;
 	EditText etNuevoPassword;
+	EditText etNuevoRepetirPassword;
 	private FirebaseAuth mAuth;
-	public static final String EXTRA_CORREO_NUEVACUENTA = "es.carlosmilena.androidfirebase.crearcuentaactivity.email";
-	public static final String EXTRA_PASSWORD_NUEVACUENTA = "es.carlosmilena.androidfirebase.crearcuentaactivity.password";
+	public static final String EXTRA_CORREO_NUEVACUENTA =
+			"es.carlosmilena.androidfirebase" + ".crearcuentaactivity.email";
+	public static final String EXTRA_PASSWORD_NUEVACUENTA =
+			"es.carlosmilena.androidfirebase" + ".crearcuentaactivity.password";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -29,41 +34,56 @@ public class CrearCuentaActivity extends AppCompatActivity{
 		setContentView(R.layout.activity_crear_cuenta);
 		etNuevoCorreo = (EditText) findViewById(R.id.etNuevoCorreo);
 		etNuevoPassword = (EditText) findViewById(R.id.etNuevoPassword);
+		etNuevoRepetirPassword = (EditText) findViewById(R.id.etNuevoRepetirPassword);
 		//------------------------------------
 		mAuth = FirebaseAuth.getInstance();
-
 	}
 
 	public void registrarCuenta(View view){
 		String email = String.valueOf(etNuevoCorreo.getText()).trim();
 		String password = String.valueOf(etNuevoPassword.getText()).trim();
-		if(email.isEmpty() && password.isEmpty()){
-			Toast.makeText(CrearCuentaActivity.this,
-					"Debe introducir una cuenta Email y contraseña para " +
-					"registrarse", Toast.LENGTH_LONG).show();
+		String passwordConfirmar = String.valueOf(etNuevoRepetirPassword.getText()).trim();
+		boolean camposIntroducidos = true;
+		if(email.isEmpty()){
+			camposIntroducidos = false;
 			etNuevoCorreo.setError("Cuenta Email no puede estar vacío");
-			etNuevoPassword.setError("Contraseña no puede estar vacío");
-			return;
 		}
-		mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this,
-				new OnCompleteListener<AuthResult>(){
-			@Override
-			public void onComplete(@NonNull Task<AuthResult> task){
-				if(task.isSuccessful()){
-					Toast.makeText(CrearCuentaActivity.this, "Registro realizado correctamente",
-							Toast.LENGTH_LONG).show();
-					FirebaseUser user = mAuth.getCurrentUser();
-					//-------------------------------------------------
-					Intent intent = new Intent(CrearCuentaActivity.this,
-							AutenticacionActivity.class);
-					intent.putExtra(EXTRA_CORREO_NUEVACUENTA, email);
-					intent.putExtra(EXTRA_PASSWORD_NUEVACUENTA, password);
-					startActivity(intent);
-				}else{
-					Toast.makeText(CrearCuentaActivity.this, "Error al intentar registrar",
-							Toast.LENGTH_LONG).show();
+		if(password.isEmpty()){
+			camposIntroducidos = false;
+			etNuevoPassword.setError("Contraseña no puede estar vacío");
+		}
+		if(passwordConfirmar.isEmpty()){
+			camposIntroducidos = false;
+			etNuevoRepetirPassword.setError("Confirmar contraseña no puede estar vacío");
+		}
+		if((!password.isEmpty() && !passwordConfirmar.isEmpty()) &&
+		   !password.equals(passwordConfirmar)){
+			camposIntroducidos = false;
+			etNuevoRepetirPassword.setError("Confirmar contraseña es distinto a contraseña");
+		}
+		if(camposIntroducidos == false){
+			Toast.makeText(CrearCuentaActivity.this, "Error en la optención de datos",
+					LENGTH_SHORT).show();
+		}else{
+			mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this,
+					new OnCompleteListener<AuthResult>(){
+				@Override
+				public void onComplete(@NonNull Task<AuthResult> task){
+					if(task.isSuccessful()){
+						Toast.makeText(CrearCuentaActivity.this,
+								"Registro realizado correctamente", LENGTH_SHORT).show();
+						FirebaseUser user = mAuth.getCurrentUser();
+						Intent intent = new Intent(CrearCuentaActivity.this,
+								AutenticacionActivity.class);
+						intent.putExtra(EXTRA_CORREO_NUEVACUENTA, email);
+						intent.putExtra(EXTRA_PASSWORD_NUEVACUENTA, password);
+						startActivity(intent);
+					}else{
+						Toast.makeText(CrearCuentaActivity.this, task.getException().getMessage(),
+								LENGTH_SHORT).show();
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 }

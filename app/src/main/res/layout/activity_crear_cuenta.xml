@@ -6,46 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".CrearCuentaActivity">
 
-
-    <EditText
-        android:id="@+id/etNuevoCorreo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Introduce cuenta Email"
-        android:inputType="text"
-        android:minHeight="48dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/morado_50"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/etNuevoPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Introduce contraseña"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNuevoCorreo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/morado_50"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnCrearCuenta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="121dp"
-        android:onClick="registrarCuenta"
-        android:text="Crear cuenta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNuevoPassword" />
+            <TextView
+                android:id="@+id/tvTituloCrearCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Creación de cuenta nueva"
+                android:textSize="24sp" />
 
+            <EditText
+                android:id="@+id/etNuevoCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Tu nombre usuario (email)"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <EditText
+                android:id="@+id/etNuevoPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Tu contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <EditText
+                android:id="@+id/etNuevoRepetirPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Confirmar contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <Button
+                android:id="@+id/btnCrearCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/morado_100"
+                android:onClick="registrarCuenta"
+                android:text="Crear cuenta" />
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

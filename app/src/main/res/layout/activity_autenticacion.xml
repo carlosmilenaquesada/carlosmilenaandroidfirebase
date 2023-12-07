@@ -51,7 +51,7 @@
                 android:layout_marginEnd="32dp"
                 android:autofillHints=""
                 android:hint="Introduce cuenta Email"
-                android:inputType="text"
+                android:inputType="text|textEmailAddress"
                 android:minHeight="48dp"
                 android:textColorHint="#3E2723" />
 
@@ -77,9 +77,9 @@
 
                 <Button
                     android:id="@+id/btnAcceder"
-                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/morado_100"
                     android:onClick="entrar"
@@ -88,9 +88,9 @@
 
                 <Button
                     android:id="@+id/btnDesconectar"
-                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/morado_100"
                     android:onClick="salir"

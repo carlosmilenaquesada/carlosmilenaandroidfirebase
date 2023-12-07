@@ -19,7 +19,7 @@
             android:name=".AgregarNuevoJuegoActivity"
             android:exported="false" />
         <activity
-            android:name=".EditarJuegoActivity"
+            android:name=".ModificarJuegoActivity"
             android:exported="false" />
         <activity
             android:name=".MostrarCatalogoFirebaseActivity"

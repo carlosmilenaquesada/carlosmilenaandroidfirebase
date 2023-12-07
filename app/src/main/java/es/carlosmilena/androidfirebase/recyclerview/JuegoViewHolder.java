@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import es.carlosmilena.androidfirebase.MostrarCatalogoFirebaseActivity;
-import es.carlosmilena.androidfirebase.EditarJuegoActivity;
+import es.carlosmilena.androidfirebase.ModificarJuegoActivity;
 import es.carlosmilena.androidfirebase.R;
 import es.carlosmilena.androidfirebase.clases.Juego;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesBlobBitmap;
@@ -99,7 +99,7 @@ public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnC
 	public void onClick(View view){
 		int posicion = getLayoutPosition();
 		Juego p = lpa.getProductos().get(posicion);
-		Intent intent = new Intent(lpa.getContexto(), EditarJuegoActivity.class);
+		Intent intent = new Intent(lpa.getContexto(), ModificarJuegoActivity.class);
 		intent.putExtra(EXTRA_DETALLES_PRODUCTO, p);
 		ivItemImagen.buildDrawingCache();
 		Bitmap foto_bm = ivItemImagen.getDrawingCache();
