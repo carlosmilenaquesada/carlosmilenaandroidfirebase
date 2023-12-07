@@ -7,66 +7,140 @@
     tools:context=".AutenticacionActivity">
 
 
-    <EditText
-        android:id="@+id/etNuevoCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:ems="10"
-        android:hint="Introduce cuenta Email"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnVerCatalogoJuego" />
-
-    <EditText
-        android:id="@+id/etNuevoPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Introduce contraseña"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/etNuevoCorreo"
-        app:layout_constraintStart_toStartOf="@+id/etNuevoCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/etNuevoCorreo" />
-
-    <Button
-        android:id="@+id/btnAcceder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:onClick="entrar"
-        android:text="Acceder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNuevoPassword" />
-
-    <Button
-        android:id="@+id/btnDesconectar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="60dp"
-        android:onClick="salir"
-        android:text="Desconectar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNuevoPassword" />
-
-    <Button
-        android:id="@+id/btnCrearNuevaCuenta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="79dp"
-        android:onClick="irACrearNuevaCuenta"
-        android:text="Crear nueva cuenta"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/morado_50"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDesconectar" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/morado_50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTituloAcceso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Acceso a WellPlayed"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/ivLogotipoAcceso"
+                android:layout_width="240dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/wellplayedlogo" />
+
+            <EditText
+                android:id="@+id/etCorreoAcceso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Introduce cuenta Email"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <EditText
+                android:id="@+id/etPasswordAcceso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Introduce contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="32dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAcceder"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/morado_100"
+                    android:onClick="entrar"
+                    android:text="Acceder"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnDesconectar"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/morado_100"
+                    android:onClick="salir"
+                    android:text="Desconectar"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="32dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#263238" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:text="¿No tienes cuenta? Regístrate ahora"
+                    android:textColor="#263238" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="50dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#263238" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCrearNuevaCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/morado_100"
+                android:onClick="irACrearNuevaCuenta"
+                android:text="Crear nueva cuenta" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

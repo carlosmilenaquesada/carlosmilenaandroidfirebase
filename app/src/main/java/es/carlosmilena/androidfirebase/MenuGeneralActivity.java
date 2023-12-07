@@ -23,12 +23,6 @@ public class MenuGeneralActivity extends AppCompatActivity{
 		}
 	}
 
-	/*    public void insertarProducto(View view)
-    {
-        Intent intent = new Intent(this,NuevoProductoActivity.class);
-        startActivity(intent);
-    }*/
-
 	public void insertarProductoConFoto(View view){
 		Intent intent = new Intent(this, AgregarNuevoJuegoActivity.class);
 		startActivity(intent);

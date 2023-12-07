@@ -27,8 +27,8 @@ public class AutenticacionActivity extends AppCompatActivity{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_autenticacion);
-		etCorreo = (EditText) findViewById(R.id.etNuevoCorreo);
-		etPassword = (EditText) findViewById(R.id.etNuevoPassword);
+		etCorreo = (EditText) findViewById(R.id.etCorreoAcceso);
+		etPassword = (EditText) findViewById(R.id.etPasswordAcceso);
 		//------------------------------------
 		mAuth = FirebaseAuth.getInstance();
 		Intent intent = getIntent();

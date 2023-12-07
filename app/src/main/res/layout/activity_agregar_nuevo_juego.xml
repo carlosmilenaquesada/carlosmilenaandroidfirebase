@@ -6,112 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".AgregarNuevoJuegoActivity">
 
-    <TextView
-        android:id="@+id/tvTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Nuevo juego"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivNuevoImagen"
-        android:layout_width="140dp"
-        android:layout_height="111dp"
-        android:layout_marginTop="26dp"
-        android:contentDescription="foto del juego"
-        android:onClick="cambiar_imagen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
-        app:srcCompat="@drawable/juego" />
-
-    <EditText
-        android:id="@+id/edtNuevoIdentificador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Indentificador"
-        android:inputType="text"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivNuevoImagen" />
-
-    <EditText
-        android:id="@+id/edtNuevoPlataforma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Plataforma"
-        android:inputType="text"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNuevoIdentificador" />
-
-    <EditText
-        android:id="@+id/edtNuevoNombreJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="text"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNuevoPlataforma" />
-
-    <EditText
-        android:id="@+id/edtNuevoGenero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:ems="10"
-        android:hint="Género"
-        android:inputType="text"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNuevoNombreJuego" />
-
-    <EditText
-        android:id="@+id/edtNuevoPrecioVenta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:ems="10"
-        android:hint="Precio"
-        android:inputType="number|numberDecimal"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNuevoGenero" />
-
-
-    <Button
-        android:id="@+id/btnInsertarNuevo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="insertarProducto_foto"
-        android:text="Insertar juego"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/morado_50"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/morado_50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Crear nuevo juego"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/ivNuevoImagen"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:contentDescription="foto del juego"
+                android:onClick="cambiar_imagen"
+                app:srcCompat="@drawable/juego" />
+
+            <EditText
+                android:id="@+id/edtNuevoIdentificador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Indentificador"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <EditText
+                android:id="@+id/edtNuevoPlataforma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Plataforma"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723"/>
+
+            <EditText
+                android:id="@+id/edtNuevoNombreJuego"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Nombre"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <EditText
+                android:id="@+id/edtNuevoGenero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Género"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <EditText
+                android:id="@+id/edtNuevoPrecioVenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints=""
+                android:hint="Precio"
+                android:inputType="number|numberDecimal"
+                android:minHeight="48dp"
+                android:textColorHint="#3E2723" />
+
+            <Button
+                android:id="@+id/btnInsertarNuevo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/morado_100"
+                android:onClick="insertarProducto_foto"
+                android:text="Insertar juego" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
