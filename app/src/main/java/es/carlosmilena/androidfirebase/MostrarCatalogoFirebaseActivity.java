@@ -33,7 +33,7 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	private ArrayList<Juego> juegos;
 	private EditText etBuscarJuego;
 	private RecyclerView rvListaJuegos;
-
+/*
 	@Override
 	protected void onStart(){
 		super.onStart();
@@ -46,7 +46,7 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 			Intent intent = new Intent(this, AutenticacionActivity.class);
 			startActivity(intent);
 		}
-	}
+	}*/
 
 	//------------------------------------------------------------------------------------
 	@Override
@@ -64,6 +64,7 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 		rvListaJuegos.setAdapter(adapter);
 		//-----------------------------------------------------------
 		myRefProductos = database.getReference("productos");
+
 		myRefProductos.addValueEventListener(new ValueEventListener(){
 			@Override
 			public void onDataChange(DataSnapshot snapshot){

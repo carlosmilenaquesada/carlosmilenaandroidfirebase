@@ -31,9 +31,11 @@ public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
 	public JuegoViewHolder(@NonNull View itemView, CatalogoJuegosAdapter lpa){
 		super(itemView);
-		tvItemNombreJuego = (TextView) itemView.findViewById(R.id.tvItemIdentificador);
-		tvItemGenero = (TextView) itemView.findViewById(R.id.tvItemPlataforma);
-		tvItemPrecioVenta = (TextView) itemView.findViewById(R.id.tvItemNombreJuego);
+		tvItemIdentificador = (TextView)itemView.findViewById(R.id.tvItemIdentificador);
+		tvItemPlataforma = (TextView) itemView.findViewById(R.id.tvItemPlataforma) ;
+		tvItemNombreJuego = (TextView) itemView.findViewById(R.id.tvItemNombreJuego);
+		tvItemGenero = (TextView) itemView.findViewById(R.id.tvItemGenero);
+		tvItemPrecioVenta = (TextView) itemView.findViewById(R.id.tvItemPrecioVenta);
 		ivItemImagen = (ImageView) itemView.findViewById(R.id.ivItemImagen);
 		this.lpa = lpa;
 		itemView.setOnClickListener(this);

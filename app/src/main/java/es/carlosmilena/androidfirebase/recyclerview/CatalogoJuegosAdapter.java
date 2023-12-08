@@ -1,6 +1,7 @@
 package es.carlosmilena.androidfirebase.recyclerview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,16 +54,21 @@ public class CatalogoJuegosAdapter extends RecyclerView.Adapter<JuegoViewHolder>
 
 	@Override
 	public void onBindViewHolder(@NonNull JuegoViewHolder holder, int position){
+
 		Juego p = this.getProductos().get(position);
+
 		//----------------------------------------------------------------------
 		holder.getTvItemIdentificador().setText("identificador: " + p.getIdentificador());
 		holder.getTvItemPlataforma().setText("plataforma: " + p.getPlataforma());
 		holder.getTvItemNombreJuego().setText("nombre: " + p.getNombreJuego());
 		holder.getTvItemGenero().setText("genero: " + p.getGenero());
 		holder.getTvItemPrecioVenta().setText("precio: " + p.getPrecioVenta());
+
+
 		//---------------------------------------------------------------------
 		ImageView imagen = holder.getIvItemImagen();
 		ImagenesFirebase.descargarFoto(p.getIdentificador(), p.getNombreJuego(), imagen);
+
 	}
 
 	@Override
