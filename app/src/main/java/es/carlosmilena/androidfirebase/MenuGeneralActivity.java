@@ -17,19 +17,27 @@ public class MenuGeneralActivity extends AppCompatActivity{
 		tvSaludoAlUsuario = (TextView) findViewById(R.id.tvSaludoAlUsuario);
 		Intent intent = getIntent();
 		if(intent != null){
-			tvSaludoAlUsuario.setText(
-					"¡Hola, " + intent.getStringExtra(AutenticacionActivity.EXTRA_NOMBRE_USUARIO) +
-					"!");
+			tvSaludoAlUsuario.setText(getString(R.string.saludo,intent.getStringExtra(AutenticacionActivity.EXTRA_NOMBRE_USUARIO)));
 		}
 	}
 
-	public void insertarProductoConFoto(View view){
+	public void irAInsertarJuegoConFoto(View view){
 		Intent intent = new Intent(this, AgregarNuevoJuegoActivity.class);
 		startActivity(intent);
 	}
 
-	public void mostrarDatos(View view){
+	public void irAMostrarDatos(View view){
 		Intent intent = new Intent(this, MostrarCatalogoFirebaseActivity.class);
 		startActivity(intent);
+	}
+
+	public void salirDeMenuGeneral(View view){
+		Intent intent = new Intent(this, AutenticacionActivity.class);
+		startActivity(intent);
+
+	}
+
+	public void cerrarAplicacion(View view){
+		finishAffinity();
 	}
 }

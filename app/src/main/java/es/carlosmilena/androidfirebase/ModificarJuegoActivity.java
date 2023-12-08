@@ -30,7 +30,7 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 	private DatabaseReference myRef;
 
 	public static final int NUEVA_IMAGEN = 1;
-	Uri imagen_seleccionada = null;
+	Uri imagenSeleccionada = null;
 
 	private EditText edtModificarIdentificador;
 	private EditText edtModificarPlataforma;
@@ -40,7 +40,7 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 	private ImageView ivModificarImagen;
 
 
-	private Juego p;
+	private Juego juego;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -49,14 +49,14 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 		ivModificarImagen = (ImageView) findViewById(R.id.ivModificarJuegoImagen);
 		Intent intent = getIntent();
 		if(intent != null){
-			p =	(Juego) intent.getSerializableExtra(JuegoViewHolder.EXTRA_DETALLES_PRODUCTO);
+			juego =	(Juego) intent.getSerializableExtra(JuegoViewHolder.EXTRA_MODIFICAR_JUEGO);
 			//---------------------- cargo la foto  ----------------------------------------
 			byte[] fotobinaria =
-					(byte[]) intent.getByteArrayExtra(JuegoViewHolder.EXTRA_IMAGEN2_PRODUCTO);
+					(byte[]) intent.getByteArrayExtra(JuegoViewHolder.EXTRA_MODIFICAR_IMAGEN);
 			Bitmap fotobitmap = ImagenesBlobBitmap.bytes_to_bitmap(fotobinaria, 200, 200);
 			ivModificarImagen.setImageBitmap(fotobitmap);
 		}else{
-			p = new Juego();
+			juego = new Juego();
 		}
 		//----------------------------------------------------------------
 		edtModificarIdentificador = (EditText) findViewById(R.id.edtModificarJuegoIdentificador);
@@ -66,23 +66,23 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 		edtModificarPrecioVenta = (EditText) findViewById(R.id.edtModificarJuegoPrecioVenta);
 		ivModificarImagen = (ImageView) findViewById(R.id.ivModificarJuegoImagen);
 		//----------------------------------------------------------------
-		edtModificarIdentificador.setText(p.getIdentificador());
-		edtModificarPlataforma.setText(p.getPlataforma());
-		edtModificarNombreJuego.setText(p.getNombreJuego());
-		edtModificarGenero.setText(p.getGenero());
-		edtModificarPrecioVenta.setText(String.valueOf(p.getPrecioVenta()));
+		edtModificarIdentificador.setText(juego.getIdentificador());
+		edtModificarPlataforma.setText(juego.getPlataforma());
+		edtModificarNombreJuego.setText(juego.getNombreJuego());
+		edtModificarGenero.setText(juego.getGenero());
+		edtModificarPrecioVenta.setText(String.valueOf(juego.getPrecioVenta()));
 	}
 
 	//----------------------------------------------------
-	public void borrar_detalles(View view){
+	public void borrarJuego(View view){
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("productos");
-		myRef.child(p.getIdentificador()).removeValue();
+		myRef.child(juego.getIdentificador()).removeValue();
 		Toast.makeText(this, "juego borrado", Toast.LENGTH_LONG).show();
 		//---------------------- borramos la imagen del firebase ------------------
 		// borramos la imagen del firebase store
-		String carpeta = p.getIdentificador();
-		ImagenesFirebase.borrarFoto(carpeta, p.getNombreJuego());
+		String carpeta = juego.getIdentificador();
+		ImagenesFirebase.borrarFoto(carpeta, juego.getNombreJuego());
 		finish();
 	}
 
@@ -102,9 +102,9 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 		productos.put(identificador, p1);//puede dar fallo por el identificador (ponía id)
 		myRef.updateChildren(productos);
 		//------------------------------------- actualizamos la foto -------------------
-		if(imagen_seleccionada != null){
-			String carpeta = p.getIdentificador();
-			ImagenesFirebase.borrarFoto(carpeta, p.getNombreJuego());
+		if(imagenSeleccionada != null){
+			String carpeta = juego.getIdentificador();
+			ImagenesFirebase.borrarFoto(carpeta, juego.getNombreJuego());
 			ImagenesFirebase.subirFoto(carpeta, nombreJuego, ivModificarImagen);
 		}
 		Toast.makeText(this, "juego actualizado correctamente ", Toast.LENGTH_LONG).show();
@@ -128,11 +128,10 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == NUEVA_IMAGEN && resultCode == Activity.RESULT_OK){
-			imagen_seleccionada = data.getData();
+			imagenSeleccionada = data.getData();
 			Bitmap bitmap = null;
 			try{
-				bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),
-						imagen_seleccionada);
+				bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagenSeleccionada);
 				ivModificarImagen.setImageBitmap(bitmap);
 				//---------------------------------------------
 			}catch(IOException e){

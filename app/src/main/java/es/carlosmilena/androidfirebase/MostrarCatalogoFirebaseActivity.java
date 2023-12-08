@@ -1,20 +1,16 @@
 package es.carlosmilena.androidfirebase;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,13 +64,13 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 		myRefProductos.addValueEventListener(new ValueEventListener(){
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
-				// adapter.getProductos().clear();
+				// adapter.getJuegos().clear();
 				ArrayList<Juego> juegos = new ArrayList<Juego>();
 				for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 					Juego a = (Juego) dataSnapshot.getValue(Juego.class);
 					juegos.add(a);
 				}
-				adapter.setProductos(juegos);
+				adapter.setJuegos(juegos);
 				adapter.notifyDataSetChanged();
 			}
 
@@ -96,13 +92,13 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	}
 
 	//-----------------------------------------------------------
-	public void buscarProductos1(View view){
+	public void buscarJuego(View view){
 		String nombre = String.valueOf(etBuscarJuego.getText());
 		myRefProductos = database.getReference("productos");
 		myRefProductos.addValueEventListener(new ValueEventListener(){
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
-				// adapter.getProductos().clear();
+				// adapter.getJuegos().clear();
 				ArrayList<Juego> juegos = new ArrayList<Juego>();
 				for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 					Juego a = (Juego) dataSnapshot.getValue(Juego.class);
@@ -110,7 +106,7 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 						juegos.add(a);
 					}
 				}
-				adapter.setProductos(juegos);
+				adapter.setJuegos(juegos);
 				adapter.notifyDataSetChanged();
 			}
 

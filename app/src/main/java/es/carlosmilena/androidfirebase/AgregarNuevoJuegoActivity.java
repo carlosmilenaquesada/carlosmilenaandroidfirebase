@@ -48,14 +48,14 @@ public class AgregarNuevoJuegoActivity extends AppCompatActivity{
 		myRef = database.getReference();
 	}
 
-	public void insertarProducto_foto(View view){
+	public void insertarJuegoConFoto(View view){
 		String identificador = String.valueOf(edtNuevoIdentificador.getText());
 		String plataforma = String.valueOf(edtNuevoPlataforma.getText());
 		String nombreJuego = String.valueOf(edtNuevoNombreJuego.getText());
 		String genero = String.valueOf(edtNuevoGenero.getText());
 		double precioVenta = Double.valueOf(String.valueOf(edtNuevoPrecioVenta.getText()));
 		Juego p1 = new Juego(identificador, plataforma, nombreJuego, genero, precioVenta);
-		myRef.child("productos").child(p1.getIdentificador()).setValue(p1);
+		myRef.child("juegos").child(p1.getIdentificador()).setValue(p1);
 		//---------------------- codigo para añadir la foto al storage
 		// ------------------------------
 		// codigo para guardar la imagen del usuario en firebase store
@@ -68,7 +68,7 @@ public class AgregarNuevoJuegoActivity extends AppCompatActivity{
 	//--------------------------------------------------------------------------
 	//--------CODIGO PARA CAMBIAR LA IMAGEN----------------
 
-	public void cambiar_imagen(View view){
+	public void cambiarImagen(View view){
 		Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
 		getIntent.setType("image/*");
 		Intent pickIntent = new Intent(Intent.ACTION_PICK,

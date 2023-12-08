@@ -1,14 +1,16 @@
 package es.carlosmilena.androidfirebase.clases;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class Juego implements Serializable{
-	private String identificador;
-	private String plataforma;
-	private String nombreJuego;
-	private String genero;
-	private double precioVenta;
+	private final String identificador;
+	private final String plataforma;
+	private final String nombreJuego;
+	private final String genero;
+	private final double precioVenta;
 
 	public Juego(String identificador, String plataforma, String nombreJuego, String genero,
 				 double precioVenta){
@@ -31,40 +33,20 @@ public class Juego implements Serializable{
 		return identificador;
 	}
 
-	public void setIdentificador(String identificador){
-		this.identificador = identificador;
-	}
-
 	public String getPlataforma(){
 		return plataforma;
-	}
-
-	public void setPlataforma(String plataforma){
-		this.plataforma = plataforma;
 	}
 
 	public String getNombreJuego(){
 		return nombreJuego;
 	}
 
-	public void setNombreJuego(String nombreJuego){
-		this.nombreJuego = nombreJuego;
-	}
-
 	public String getGenero(){
 		return genero;
 	}
 
-	public void setGenero(String genero){
-		this.genero = genero;
-	}
-
 	public double getPrecioVenta(){
 		return precioVenta;
-	}
-
-	public void setPrecioVenta(double precioVenta){
-		this.precioVenta = precioVenta;
 	}
 
 	@Override
@@ -84,10 +66,11 @@ public class Juego implements Serializable{
 		return Objects.hash(identificador);
 	}
 
+	@NonNull
 	@Override
 	public String toString(){
-		return "Juego{" + "identificador='" + identificador + '\'' + ", plataforma='" +
-			   plataforma + '\'' + ", nombreJuego='" + nombreJuego + '\'' + ", genero='" + genero +
-			   '\'' + ", precioVenta=" + precioVenta + '}';
+		return "Juego{" + "identificador='" + identificador + '\'' + ", plataforma='" + plataforma +
+			   '\'' + ", nombreJuego='" + nombreJuego + '\'' + ", genero='" + genero + '\'' +
+			   ", precioVenta=" + precioVenta + '}';
 	}
 }

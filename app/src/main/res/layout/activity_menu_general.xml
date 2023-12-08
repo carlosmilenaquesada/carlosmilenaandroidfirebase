@@ -43,25 +43,32 @@
                 android:text="¿Qué deseas hacer?"
                 android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/btnInsertarJuego"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
-                android:backgroundTint="@color/morado_100"
-                android:onClick="insertarProductoConFoto"
-                android:text="Insertar nuevo juego" />
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnVerCatalogoJuego"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
-                android:backgroundTint="@color/morado_100"
-                android:onClick="mostrarDatos"
-                android:text="Mostrar catálogo" />
+                <Button
+                    android:id="@+id/btnInsertarJuego"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="16dp"
+                    android:backgroundTint="@color/morado_100"
+                    android:onClick="irAInsertarJuegoConFoto"
+                    android:text="Insertar nuevo juego" />
+
+                <Button
+                    android:id="@+id/btnVerCatalogoJuego"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="16dp"
+                    android:backgroundTint="@color/morado_100"
+                    android:onClick="irAMostrarDatos"
+                    android:text="Mostrar catálogo" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,16 +84,18 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/morado_100"
+                    android:onClick="cerrarAplicacion"
                     android:text="Cerrar aplicación" />
 
                 <Button
-                    android:id="@+id/btnCerrarSesion"
+                    android:id="@+id/btnVolverMenuInicial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/morado_100"
-                    android:text="Gestionar sesión" />
+                    android:onClick="salirDeMenuGeneral"
+                    android:text="Volver atrás" />
             </LinearLayout>
 
         </LinearLayout>

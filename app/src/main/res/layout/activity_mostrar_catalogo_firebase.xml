@@ -44,7 +44,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:backgroundTint="@color/morado_100"
-            android:onClick="buscarProductos1"
+            android:onClick="buscarJuego"
             android:text="Buscar" />
     </LinearLayout>
 

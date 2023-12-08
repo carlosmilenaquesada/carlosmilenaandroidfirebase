@@ -1,7 +1,6 @@
 package es.carlosmilena.androidfirebase.recyclerview;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +16,9 @@ import es.carlosmilena.androidfirebase.clases.Juego;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesFirebase;
 
 public class CatalogoJuegosAdapter extends RecyclerView.Adapter<JuegoViewHolder>{
-	private Context contexto;
+	private final Context contexto;
 	private ArrayList<Juego> juegos;
-	private LayoutInflater inflate;
+	private final LayoutInflater inflate;
 
 	public CatalogoJuegosAdapter(Context contexto, ArrayList<Juego> juegos){
 		this.contexto = contexto;
@@ -31,44 +30,35 @@ public class CatalogoJuegosAdapter extends RecyclerView.Adapter<JuegoViewHolder>
 	@Override
 	public JuegoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
 		View mItemView = inflate.inflate(R.layout.item_rv_juego, parent, false);
-		JuegoViewHolder evh = new JuegoViewHolder(mItemView, this);
-		return evh;
+		return new JuegoViewHolder(mItemView, this);
 	}
 
 	public Context getContexto(){
 		return contexto;
 	}
 
-	public void setContexto(Context contexto){
-		this.contexto = contexto;
-	}
-
-	public ArrayList<Juego> getProductos(){
+	public ArrayList<Juego> getJuegos(){
 		return juegos;
 	}
 
-	public void setProductos(ArrayList<Juego> juegos){
+	public void setJuegos(ArrayList<Juego> juegos){
 		this.juegos = juegos;
 		notifyDataSetChanged();
 	}
 
 	@Override
 	public void onBindViewHolder(@NonNull JuegoViewHolder holder, int position){
-
-		Juego p = this.getProductos().get(position);
-
+		Juego p = this.getJuegos().get(position);
 		//----------------------------------------------------------------------
-		holder.getTvItemIdentificador().setText("identificador: " + p.getIdentificador());
-		holder.getTvItemPlataforma().setText("plataforma: " + p.getPlataforma());
-		holder.getTvItemNombreJuego().setText("nombre: " + p.getNombreJuego());
-		holder.getTvItemGenero().setText("genero: " + p.getGenero());
-		holder.getTvItemPrecioVenta().setText("precio: " + p.getPrecioVenta());
-
-
+		holder.getTvItemIdentificador().setText(getContexto().getResources().getString(R.string.identificador, p.getIdentificador()));
+		holder.getTvItemPlataforma().setText(getContexto().getResources().getString(R.string.plataforma, p.getPlataforma()));
+		holder.getTvItemNombreJuego().setText(getContexto().getResources().getString(R.string.nombre, p.getNombreJuego()));
+		holder.getTvItemGenero().setText(getContexto().getResources().getString(R.string.genero,
+				p.getGenero()));
+		holder.getTvItemPrecioVenta().setText(getContexto().getResources().getString(R.string.precio, String.valueOf(p.getPrecioVenta())));
 		//---------------------------------------------------------------------
 		ImageView imagen = holder.getIvItemImagen();
 		ImagenesFirebase.descargarFoto(p.getIdentificador(), p.getNombreJuego(), imagen);
-
 	}
 
 	@Override

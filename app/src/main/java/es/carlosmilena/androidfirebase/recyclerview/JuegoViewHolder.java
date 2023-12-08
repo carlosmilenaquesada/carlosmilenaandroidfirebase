@@ -16,17 +16,17 @@ import es.carlosmilena.androidfirebase.clases.Juego;
 import es.carlosmilena.androidfirebase.utilidades.ImagenesBlobBitmap;
 
 public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-	public static final String EXTRA_DETALLES_PRODUCTO = "es.carlosmilena.androidfirebase" +
-                                                         ".mostrardetallesproductos.juego";
-	public static final String EXTRA_IMAGEN2_PRODUCTO = "es.carlosmilena.androidfirebase" +
-                                                        ".mostrardetallesproductos.imagen2";
-	private TextView tvItemIdentificador;
-	private TextView tvItemPlataforma;
-	private TextView tvItemNombreJuego;
-	private TextView tvItemGenero;
-	private TextView tvItemPrecioVenta;
-	private ImageView ivItemImagen;
-	private CatalogoJuegosAdapter lpa;
+	public static final String EXTRA_MODIFICAR_JUEGO = "es.carlosmilena.androidfirebase" +
+													   ".modificarjuego.juego";
+	public static final String EXTRA_MODIFICAR_IMAGEN = "es.carlosmilena.androidfirebase" +
+														".modificarjuego.imagen";
+	private final TextView tvItemIdentificador;
+	private final TextView tvItemPlataforma;
+	private final TextView tvItemNombreJuego;
+	private final TextView tvItemGenero;
+	private final TextView tvItemPrecioVenta;
+	private final ImageView ivItemImagen;
+	private final CatalogoJuegosAdapter lpa;
 
 
 	public JuegoViewHolder(@NonNull View itemView, CatalogoJuegosAdapter lpa){
@@ -45,70 +45,39 @@ public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnC
         return tvItemIdentificador;
     }
 
-    public void setTvItemIdentificador(TextView tvItemIdentificador){
-        this.tvItemIdentificador = tvItemIdentificador;
-    }
-
-    public TextView getTvItemPlataforma(){
+	public TextView getTvItemPlataforma(){
         return tvItemPlataforma;
     }
 
-    public void setTvItemPlataforma(TextView tvItemPlataforma){
-        this.tvItemPlataforma = tvItemPlataforma;
-    }
-
-    public TextView getTvItemNombreJuego(){
+	public TextView getTvItemNombreJuego(){
         return tvItemNombreJuego;
     }
 
-    public void setTvItemNombreJuego(TextView tvItemNombreJuego){
-        this.tvItemNombreJuego = tvItemNombreJuego;
-    }
-
-    public TextView getTvItemGenero(){
+	public TextView getTvItemGenero(){
         return tvItemGenero;
     }
 
-    public void setTvItemGenero(TextView tvItemGenero){
-        this.tvItemGenero = tvItemGenero;
-    }
-
-    public TextView getTvItemPrecioVenta(){
+	public TextView getTvItemPrecioVenta(){
         return tvItemPrecioVenta;
     }
 
-    public void setTvItemPrecioVenta(TextView tvItemPrecioVenta){
-        this.tvItemPrecioVenta = tvItemPrecioVenta;
-    }
-
-    public ImageView getIvItemImagen(){
+	public ImageView getIvItemImagen(){
         return ivItemImagen;
     }
 
-    public void setIvItemImagen(ImageView ivItemImagen){
-        this.ivItemImagen = ivItemImagen;
-    }
-
-    public CatalogoJuegosAdapter getLpa(){
-        return lpa;
-    }
-
-    public void setLpa(CatalogoJuegosAdapter lpa){
-        this.lpa = lpa;
-    }
-
-    @Override
+	@Override
 	public void onClick(View view){
 		int posicion = getLayoutPosition();
-		Juego p = lpa.getProductos().get(posicion);
+		Juego juego = lpa.getJuegos().get(posicion);
 		Intent intent = new Intent(lpa.getContexto(), ModificarJuegoActivity.class);
-		intent.putExtra(EXTRA_DETALLES_PRODUCTO, p);
+		intent.putExtra(EXTRA_MODIFICAR_JUEGO, juego);
 		ivItemImagen.buildDrawingCache();
 		Bitmap foto_bm = ivItemImagen.getDrawingCache();
 		byte[] fotobytes = ImagenesBlobBitmap.bitmap_to_bytes_png(foto_bm);
-		intent.putExtra(EXTRA_IMAGEN2_PRODUCTO, fotobytes);
+		intent.putExtra(EXTRA_MODIFICAR_IMAGEN, fotobytes);
 		//intent.putExtra(EXTRA_POSICION_CASILLA, posicion);
 		lpa.getContexto().startActivity(intent);
 		((MostrarCatalogoFirebaseActivity) lpa.getContexto()).finish();
 	}
+
 }

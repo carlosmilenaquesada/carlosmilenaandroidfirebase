@@ -71,7 +71,7 @@ public class CrearCuentaActivity extends AppCompatActivity{
 				public void onComplete(@NonNull Task<AuthResult> task){
 					if(task.isSuccessful()){
 						Toast.makeText(CrearCuentaActivity.this,
-								"Registro realizado correctamente", LENGTH_SHORT).show();
+								"Registro realizado " + "correctamente", LENGTH_SHORT).show();
 						FirebaseUser user = mAuth.getCurrentUser();
 						Intent intent = new Intent(CrearCuentaActivity.this,
 								AutenticacionActivity.class);
@@ -85,5 +85,10 @@ public class CrearCuentaActivity extends AppCompatActivity{
 				}
 			});
 		}
+	}
+
+	public void salirDeCrearCuenta(View view){
+		Intent intent = new Intent(CrearCuentaActivity.this, AutenticacionActivity.class);
+		startActivity(intent);
 	}
 }
