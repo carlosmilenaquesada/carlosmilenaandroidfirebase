@@ -1,16 +1,20 @@
 package es.carlosmilena.androidfirebase;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +33,7 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	private ArrayList<Juego> juegos;
 	private EditText etBuscarJuego;
 	private RecyclerView rvListaJuegos;
-/*
+
 	@Override
 	protected void onStart(){
 		super.onStart();
@@ -38,11 +42,11 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 		if(usuarioActual != null){
 			usuarioActual.reload();
 		}else{
-			Toast.makeText(this, "debes loguearte primero", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Debes loguearte para acceder", Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, AutenticacionActivity.class);
 			startActivity(intent);
 		}
-	}*/
+	}
 
 	//------------------------------------------------------------------------------------
 	@Override
@@ -95,12 +99,13 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	//-----------------------------------------------------------
 	public void buscarJuego(View view){
 		String nombre = String.valueOf(etBuscarJuego.getText());
-		myRefJuegos = database.getReference("productos");
+		myRefJuegos = database.getReference("juegos");
 		myRefJuegos.addValueEventListener(new ValueEventListener(){
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
 				// adapter.getJuegos().clear();
 				ArrayList<Juego> juegos = new ArrayList<Juego>();
+				if(view.equals(findViewById(R.id.btnBuscarJuego)));
 				for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 					Juego a = (Juego) dataSnapshot.getValue(Juego.class);
 					if(a.getNombreJuego().toLowerCase().contains(nombre.toLowerCase())){
@@ -117,5 +122,10 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 				Log.i("firebase1", String.valueOf(error.toException()));
 			}
 		});
+	}
+
+	public void volver(View view){
+
+		startActivity(new Intent(MostrarCatalogoFirebaseActivity.this, MenuGeneralActivity.class));
 	}
 }

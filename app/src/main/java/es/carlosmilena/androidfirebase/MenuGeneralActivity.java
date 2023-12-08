@@ -4,11 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MenuGeneralActivity extends AppCompatActivity{
 	TextView tvSaludoAlUsuario;
+
+	@Override
+	protected void onStart(){
+		super.onStart();
+		FirebaseAuth mAuth = FirebaseAuth.getInstance();
+		FirebaseUser usuarioActual = mAuth.getCurrentUser();
+		if(usuarioActual != null){
+			usuarioActual.reload();
+		}else{
+			Toast.makeText(this, "Debes loguearte para acceder", Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, AutenticacionActivity.class);
+			startActivity(intent);
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -17,7 +35,8 @@ public class MenuGeneralActivity extends AppCompatActivity{
 		tvSaludoAlUsuario = (TextView) findViewById(R.id.tvSaludoAlUsuario);
 		Intent intent = getIntent();
 		if(intent != null){
-			tvSaludoAlUsuario.setText(getString(R.string.saludo,intent.getStringExtra(AutenticacionActivity.EXTRA_NOMBRE_USUARIO)));
+			tvSaludoAlUsuario.setText(getString(R.string.saludo,
+					intent.getStringExtra(AutenticacionActivity.EXTRA_NOMBRE_USUARIO)));
 		}
 	}
 
@@ -34,7 +53,6 @@ public class MenuGeneralActivity extends AppCompatActivity{
 	public void salirDeMenuGeneral(View view){
 		Intent intent = new Intent(this, AutenticacionActivity.class);
 		startActivity(intent);
-
 	}
 
 	public void cerrarAplicacion(View view){

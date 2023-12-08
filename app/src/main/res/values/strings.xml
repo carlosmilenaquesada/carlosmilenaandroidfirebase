@@ -10,4 +10,9 @@
     <string name="genero">genero: %s</string>
     <string name="precio">precio: %s</string>
     <string name="saludo">¡Hola, %s!</string>
+    <string-array name="plataformas">
+        <item>Playstation 5</item>
+        <item>XBox Series</item>
+        <item>Nintendo Switch</item>
+    </string-array>
 </resources>

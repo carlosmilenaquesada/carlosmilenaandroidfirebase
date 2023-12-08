@@ -49,19 +49,36 @@
                     app:srcCompat="@drawable/juego" />
             </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/edtModificarJuegoPlataforma"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:autofillHints=""
-                android:hint="Plataforma"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:singleLine="true"
-                android:textColorHint="#3E2723" />
+                android:background="@color/morado_25"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvModificarPlataforma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:paddingStart="4dp"
+                    android:text="Plataforma"
+                    android:textColor="#263238"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spModificarJuegoPlataforma"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:minHeight="48dp" />
+            </LinearLayout>
+
 
             <EditText
                 android:id="@+id/edtModificarJuegoNombreJuego"
@@ -71,9 +88,11 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:autofillHints=""
+                android:background="@color/morado_25"
                 android:hint="Nombre"
                 android:inputType="text"
                 android:minHeight="48dp"
+                android:paddingStart="4dp"
                 android:singleLine="true"
                 android:textColorHint="#3E2723" />
 
@@ -85,9 +104,11 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:autofillHints=""
+                android:background="@color/morado_25"
                 android:hint="Género"
                 android:inputType="text"
                 android:minHeight="48dp"
+                android:paddingStart="4dp"
                 android:singleLine="true"
                 android:textColorHint="#3E2723" />
 
@@ -99,15 +120,17 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:autofillHints=""
+                android:background="@color/morado_25"
                 android:hint="Precio"
                 android:inputType="number|numberDecimal"
                 android:minHeight="48dp"
+                android:paddingStart="4dp"
                 android:singleLine="true"
                 android:textColorHint="#3E2723" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="32dp"
                 android:orientation="horizontal">

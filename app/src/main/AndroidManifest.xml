@@ -13,9 +13,6 @@
         android:theme="@style/Theme.androidfirebase"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityVideo"
-            android:exported="false" />
-        <activity
             android:name=".MenuGeneralActivity"
             android:exported="false" />
         <activity

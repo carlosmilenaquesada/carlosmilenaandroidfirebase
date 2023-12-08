@@ -25,7 +25,7 @@
             <TextView
                 android:id="@+id/tvTituloAcceso"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="64dp"
                 android:layout_weight="1"
@@ -84,7 +84,8 @@
                     android:backgroundTint="@color/morado_100"
                     android:onClick="entrar"
                     android:text="Acceder"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    style="?android:attr/buttonBarButtonStyle" />
 
                 <Button
                     android:id="@+id/btnDesconectar"
@@ -95,7 +96,8 @@
                     android:backgroundTint="@color/morado_100"
                     android:onClick="salir"
                     android:text="Desconectar"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    style="?android:attr/buttonBarButtonStyle" />
             </LinearLayout>
 
             <LinearLayout
