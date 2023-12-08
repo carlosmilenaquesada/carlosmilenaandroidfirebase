@@ -26,7 +26,6 @@ public class AgregarNuevoJuegoActivity extends AppCompatActivity{
 	private DatabaseReference myRef;
 	public static final int NUEVA_IMAGEN = 1;
 	Uri imagen_seleccionada = null;
-	private EditText edtNuevoIdentificador;
 	private EditText edtNuevoPlataforma;
 	private EditText edtNuevoNombreJuego;
 	private EditText edtNuevoGenero;
@@ -37,7 +36,6 @@ public class AgregarNuevoJuegoActivity extends AppCompatActivity{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_agregar_nuevo_juego);
-		edtNuevoIdentificador = (EditText) findViewById(R.id.edtNuevoIdentificador);
 		edtNuevoPlataforma = (EditText) findViewById(R.id.edtNuevoPlataforma);
 		edtNuevoNombreJuego = (EditText) findViewById(R.id.edtNuevoNombreJuego);
 		edtNuevoGenero = (EditText) findViewById(R.id.edtNuevoGenero);
@@ -49,26 +47,28 @@ public class AgregarNuevoJuegoActivity extends AppCompatActivity{
 	}
 
 	public void insertarJuegoConFoto(View view){
-		String identificador = String.valueOf(edtNuevoIdentificador.getText());
 		String plataforma = String.valueOf(edtNuevoPlataforma.getText());
 		String nombreJuego = String.valueOf(edtNuevoNombreJuego.getText());
 		String genero = String.valueOf(edtNuevoGenero.getText());
 		double precioVenta = Double.valueOf(String.valueOf(edtNuevoPrecioVenta.getText()));
-		Juego p1 = new Juego(identificador, plataforma, nombreJuego, genero, precioVenta);
-		myRef.child("juegos").child(p1.getIdentificador()).setValue(p1);
+
+		String id = myRef.child("juegos").push().getKey();
+		Juego juego = new Juego(id, plataforma, nombreJuego, genero, precioVenta);
+		myRef.child("juegos").child(id).setValue(juego);//child(juego.getIdentificador()).setValue
+		// (juego);
 		//---------------------- codigo para añadir la foto al storage
 		// ------------------------------
 		// codigo para guardar la imagen del usuario en firebase store
 		if(imagen_seleccionada != null){
-			String carpeta = p1.getIdentificador();
-			ImagenesFirebase.subirFoto(carpeta, p1.getNombreJuego(), ivNuevoImagen);
+			String carpeta = id;
+			ImagenesFirebase.subirFoto(carpeta, juego.getNombreJuego(), ivNuevoImagen);
 		}
 		Toast.makeText(this, "juego añadido correctamente ", Toast.LENGTH_LONG).show();
 	}
 	//--------------------------------------------------------------------------
 	//--------CODIGO PARA CAMBIAR LA IMAGEN----------------
 
-	public void cambiarImagen(View view){
+	public void cambiarImagenCreacion(View view){
 		Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
 		getIntent.setType("image/*");
 		Intent pickIntent = new Intent(Intent.ACTION_PICK,

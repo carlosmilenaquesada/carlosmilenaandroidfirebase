@@ -24,7 +24,7 @@ import es.carlosmilena.androidfirebase.recyclerview.CatalogoJuegosAdapter;
 
 public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	private FirebaseDatabase database;
-	private DatabaseReference myRefProductos;
+	private DatabaseReference myRefJuegos;
 	CatalogoJuegosAdapter adapter;
 	private ArrayList<Juego> juegos;
 	private EditText etBuscarJuego;
@@ -59,15 +59,16 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 		adapter = new CatalogoJuegosAdapter(this, juegos);
 		rvListaJuegos.setAdapter(adapter);
 		//-----------------------------------------------------------
-		myRefProductos = database.getReference("productos");
+		myRefJuegos = database.getReference("juegos");
 
-		myRefProductos.addValueEventListener(new ValueEventListener(){
+		myRefJuegos.addValueEventListener(new ValueEventListener(){
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
 				// adapter.getJuegos().clear();
 				ArrayList<Juego> juegos = new ArrayList<Juego>();
 				for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 					Juego a = (Juego) dataSnapshot.getValue(Juego.class);
+					a.setIdentificador(dataSnapshot.getRef().getKey());
 					juegos.add(a);
 				}
 				adapter.setJuegos(juegos);
@@ -94,8 +95,8 @@ public class MostrarCatalogoFirebaseActivity extends AppCompatActivity{
 	//-----------------------------------------------------------
 	public void buscarJuego(View view){
 		String nombre = String.valueOf(etBuscarJuego.getText());
-		myRefProductos = database.getReference("productos");
-		myRefProductos.addValueEventListener(new ValueEventListener(){
+		myRefJuegos = database.getReference("productos");
+		myRefJuegos.addValueEventListener(new ValueEventListener(){
 			@Override
 			public void onDataChange(DataSnapshot snapshot){
 				// adapter.getJuegos().clear();

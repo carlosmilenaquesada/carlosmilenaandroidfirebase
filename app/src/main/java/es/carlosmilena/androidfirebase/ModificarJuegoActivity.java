@@ -32,7 +32,6 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 	public static final int NUEVA_IMAGEN = 1;
 	Uri imagenSeleccionada = null;
 
-	private EditText edtModificarIdentificador;
 	private EditText edtModificarPlataforma;
 	private EditText edtModificarNombreJuego;
 	private EditText edtModificarGenero;
@@ -59,14 +58,14 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 			juego = new Juego();
 		}
 		//----------------------------------------------------------------
-		edtModificarIdentificador = (EditText) findViewById(R.id.edtModificarJuegoIdentificador);
+
 		edtModificarPlataforma = (EditText) findViewById(R.id.edtModificarJuegoPlataforma);
 		edtModificarNombreJuego = (EditText) findViewById(R.id.edtModificarJuegoNombreJuego);
 		edtModificarGenero = (EditText) findViewById(R.id.edtModificarJuegoGenero);
 		edtModificarPrecioVenta = (EditText) findViewById(R.id.edtModificarJuegoPrecioVenta);
 		ivModificarImagen = (ImageView) findViewById(R.id.ivModificarJuegoImagen);
 		//----------------------------------------------------------------
-		edtModificarIdentificador.setText(juego.getIdentificador());
+
 		edtModificarPlataforma.setText(juego.getPlataforma());
 		edtModificarNombreJuego.setText(juego.getNombreJuego());
 		edtModificarGenero.setText(juego.getGenero());
@@ -76,31 +75,29 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 	//----------------------------------------------------
 	public void borrarJuego(View view){
 		database = FirebaseDatabase.getInstance();
-		myRef = database.getReference("productos");
+		myRef = database.getReference("juegos");
 		myRef.child(juego.getIdentificador()).removeValue();
 		Toast.makeText(this, "juego borrado", Toast.LENGTH_LONG).show();
 		//---------------------- borramos la imagen del firebase ------------------
 		// borramos la imagen del firebase store
 		String carpeta = juego.getIdentificador();
 		ImagenesFirebase.borrarFoto(carpeta, juego.getNombreJuego());
-		finish();
+		startActivity(new Intent(ModificarJuegoActivity.this, MostrarCatalogoFirebaseActivity.class));
 	}
 
 	//---------------------------------------------------
-	public void editar_detalles(View view){
+	public void editarJuego(View view){
 		database = FirebaseDatabase.getInstance();
-		myRef = database.getReference("productos");
+		myRef = database.getReference("juegos");
 
-
-		String identificador = String.valueOf(edtModificarIdentificador.getText());
 		String plataforma = String.valueOf(edtModificarPlataforma.getText());
 		String nombreJuego = String.valueOf(edtModificarNombreJuego.getText());
 		String genero = String.valueOf(edtModificarGenero.getText());
 		double precioVenta = Double.valueOf(String.valueOf(edtModificarPrecioVenta.getText()));
-		Juego p1 = new Juego(identificador, plataforma, nombreJuego, genero, precioVenta);
-		Map<String, Object> productos = new HashMap<>();
-		productos.put(identificador, p1);//puede dar fallo por el identificador (ponía id)
-		myRef.updateChildren(productos);
+		Juego j = new Juego(juego.getIdentificador(), plataforma, nombreJuego, genero, precioVenta);
+		Map<String, Object> juegos = new HashMap<>();
+		juegos.put(juego.getIdentificador(), j);//puede dar fallo por el identificador (ponía id)
+		myRef.updateChildren(juegos);
 		//------------------------------------- actualizamos la foto -------------------
 		if(imagenSeleccionada != null){
 			String carpeta = juego.getIdentificador();
@@ -108,12 +105,13 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 			ImagenesFirebase.subirFoto(carpeta, nombreJuego, ivModificarImagen);
 		}
 		Toast.makeText(this, "juego actualizado correctamente ", Toast.LENGTH_LONG).show();
-		finish();
+		startActivity(new Intent(ModificarJuegoActivity.this, MostrarCatalogoFirebaseActivity.class));
+
 	}
 	//--------------------------------------------------------------------------
 	//--------CODIGO PARA CAMBIAR LA IMAGEN----------------
 
-	public void cambiar_imagen(View view){
+	public void cambiarImagenModificacion(View view){
 		Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
 		getIntent.setType("image/*");
 		Intent pickIntent = new Intent(Intent.ACTION_PICK,
@@ -123,7 +121,9 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 		chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
 		startActivityForResult(chooserIntent, NUEVA_IMAGEN);
 	}
-
+	public void cancelarCambiosModificacion(View view){
+		startActivity(new Intent(ModificarJuegoActivity.this, MostrarCatalogoFirebaseActivity.class));
+	}
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);

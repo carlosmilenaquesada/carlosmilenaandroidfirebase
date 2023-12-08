@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Juego implements Serializable{
-	private final String identificador;
+	private String identificador;
 	private final String plataforma;
 	private final String nombreJuego;
 	private final String genero;
@@ -27,6 +27,10 @@ public class Juego implements Serializable{
 		this.nombreJuego = "";
 		this.genero = "";
 		this.precioVenta = 0.0;
+	}
+
+	public void setIdentificador(String identificador){
+		this.identificador = identificador;
 	}
 
 	public String getIdentificador(){

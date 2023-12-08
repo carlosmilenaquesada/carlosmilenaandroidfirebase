@@ -38,6 +38,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:elevation="10dp"
+                android:onClick="cambiarImagenCreacion"
                 app:cardCornerRadius="8dp">
 
                 <ImageView
@@ -45,23 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="foto del juego"
-                    android:onClick="cambiarImagen"
                     app:srcCompat="@drawable/insertarimagen" />
             </androidx.cardview.widget.CardView>
-
-            <EditText
-                android:id="@+id/edtNuevoIdentificador"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:autofillHints=""
-                android:hint="Indentificador"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:singleLine="true"
-                android:textColorHint="#3E2723" />
 
             <EditText
                 android:id="@+id/edtNuevoPlataforma"

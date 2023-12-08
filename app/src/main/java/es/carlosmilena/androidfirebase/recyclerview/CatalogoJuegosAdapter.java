@@ -50,7 +50,6 @@ public class CatalogoJuegosAdapter extends RecyclerView.Adapter<JuegoViewHolder>
 	public void onBindViewHolder(@NonNull JuegoViewHolder holder, int position){
 		Juego p = this.getJuegos().get(position);
 		//----------------------------------------------------------------------
-		holder.getTvItemIdentificador().setText(getContexto().getResources().getString(R.string.identificador, p.getIdentificador()));
 		holder.getTvItemPlataforma().setText(getContexto().getResources().getString(R.string.plataforma, p.getPlataforma()));
 		holder.getTvItemNombreJuego().setText(getContexto().getResources().getString(R.string.nombre, p.getNombreJuego()));
 		holder.getTvItemGenero().setText(getContexto().getResources().getString(R.string.genero,

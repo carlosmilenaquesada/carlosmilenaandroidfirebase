@@ -20,7 +20,7 @@ public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnC
 													   ".modificarjuego.juego";
 	public static final String EXTRA_MODIFICAR_IMAGEN = "es.carlosmilena.androidfirebase" +
 														".modificarjuego.imagen";
-	private final TextView tvItemIdentificador;
+
 	private final TextView tvItemPlataforma;
 	private final TextView tvItemNombreJuego;
 	private final TextView tvItemGenero;
@@ -31,7 +31,7 @@ public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
 	public JuegoViewHolder(@NonNull View itemView, CatalogoJuegosAdapter lpa){
 		super(itemView);
-		tvItemIdentificador = (TextView)itemView.findViewById(R.id.tvItemIdentificador);
+
 		tvItemPlataforma = (TextView) itemView.findViewById(R.id.tvItemPlataforma) ;
 		tvItemNombreJuego = (TextView) itemView.findViewById(R.id.tvItemNombreJuego);
 		tvItemGenero = (TextView) itemView.findViewById(R.id.tvItemGenero);
@@ -41,9 +41,6 @@ public class JuegoViewHolder extends RecyclerView.ViewHolder implements View.OnC
 		itemView.setOnClickListener(this);
 	}
 
-    public TextView getTvItemIdentificador(){
-        return tvItemIdentificador;
-    }
 
 	public TextView getTvItemPlataforma(){
         return tvItemPlataforma;
