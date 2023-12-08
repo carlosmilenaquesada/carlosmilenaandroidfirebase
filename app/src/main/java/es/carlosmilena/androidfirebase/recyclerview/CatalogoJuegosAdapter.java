@@ -57,7 +57,8 @@ public class CatalogoJuegosAdapter extends RecyclerView.Adapter<JuegoViewHolder>
 		holder.getTvItemPrecioVenta().setText(getContexto().getResources().getString(R.string.precio, String.valueOf(p.getPrecioVenta())));
 		//---------------------------------------------------------------------
 		ImageView imagen = holder.getIvItemImagen();
-		ImagenesFirebase.descargarFoto(p.getIdentificador(), p.getNombreJuego(), imagen);
+		ImagenesFirebase.descargarFoto(p.getIdentificador(),
+				p.getPlataforma() + "_" + p.getNombreJuego(), imagen);
 	}
 
 	@Override

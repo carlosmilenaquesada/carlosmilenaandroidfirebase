@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 	private ImageView ivModificarImagen;
 	ArrayAdapter<String> adapter;
 	private Juego juego;
+
 	@Override
 	protected void onStart(){
 		super.onStart();
@@ -54,6 +56,7 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 			startActivity(intent);
 		}
 	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -80,6 +83,7 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 		edtModificarGenero.setText(juego.getGenero());
 		edtModificarPrecioVenta.setText(String.valueOf(juego.getPrecioVenta()));
 	}
+
 	public void borrarJuego(View view){
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("juegos");
@@ -103,10 +107,13 @@ public class ModificarJuegoActivity extends AppCompatActivity{
 		Map<String, Object> juegos = new HashMap<>();
 		juegos.put(juego.getIdentificador(), j);
 		myRef.updateChildren(juegos);
-		if(imagenSeleccionada != null){
+		if(ivModificarImagen.getDrawable() != null){
 			String carpeta = juego.getIdentificador();
-			ImagenesFirebase.borrarFoto(carpeta, juego.getPlataforma() + "_" +juego.getNombreJuego());
-			ImagenesFirebase.subirFoto(carpeta, plataforma + "_" +nombreJuego, ivModificarImagen);
+			Log.d("juego", juego.getPlataforma() + "_" + juego.getNombreJuego());
+			Log.d("juego", plataforma + "_" + nombreJuego);
+			ImagenesFirebase.borrarFoto(carpeta,
+					juego.getPlataforma() + "_" + juego.getNombreJuego());
+			ImagenesFirebase.subirFoto(carpeta, plataforma + "_" + nombreJuego, ivModificarImagen);
 		}
 		Toast.makeText(this, "juego actualizado correctamente ", Toast.LENGTH_LONG).show();
 		startActivity(new Intent(ModificarJuegoActivity.this,
